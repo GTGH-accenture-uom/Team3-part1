@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.Time;
 import java.time.LocalDate;
 
 public class Vaccination {
@@ -46,4 +47,8 @@ public class Vaccination {
     public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
-}
+
+
+    }
+
+
