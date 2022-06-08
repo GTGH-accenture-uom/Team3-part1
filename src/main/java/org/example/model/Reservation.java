@@ -1,9 +1,13 @@
 package org.example.model;
 
+import java.util.ArrayList;
+
 public class Reservation {
     Insured insuredPerson;
     Timeslot timeslot;
     Boolean isDone = false;
+    ArrayList<Reservation> reservations = new ArrayList<>();
+
     public Reservation(Insured insuredPerson, Timeslot timeslot) {
         this.insuredPerson = insuredPerson;
         this.timeslot = timeslot;
@@ -23,5 +27,15 @@ public class Reservation {
 
     public void setDone(boolean b) {
         isDone = b;
+    }
+
+
+    public void printFutureReservations(){
+        System.out.println("The coming vaccination dates are: " );
+        for (Reservation rev : reservations){
+            if (!reservations.isEmpty()){
+                System.out.println(timeslot);
+            }
+        }
     }
 }

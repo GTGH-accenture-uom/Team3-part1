@@ -7,6 +7,8 @@ public class VaccinationCenter {
     private String address;
     private ArrayList<Timeslot> timeslots;
 
+    ArrayList<Reservation> reservations = new ArrayList<>();
+
     public VaccinationCenter(String code, String address, ArrayList<Timeslot> timeslots) {
         this.code = code;
         this.address = address;
@@ -35,5 +37,23 @@ public class VaccinationCenter {
 
     public void setTimeslots(ArrayList<Timeslot> timeslots) {
         this.timeslots = timeslots;
+    }
+
+    public void setReservations(ArrayList<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void printOpenDates(){
+        System.out.println("The available dates of the " + code + " vaccination center are: ");
+        for (Reservation rev : reservations){
+            if (reservations.isEmpty()) {
+                continue;
+            }
+            System.out.println(timeslots);
+        }
     }
 }
