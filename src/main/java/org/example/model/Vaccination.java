@@ -1,6 +1,8 @@
-package org.example;
+package org.example.model;
 
-import java.sql.Time;
+import org.example.model.Doctor;
+import org.example.model.Insured;
+
 import java.time.LocalDate;
 
 public class Vaccination {

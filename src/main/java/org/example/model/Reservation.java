@@ -1,11 +1,9 @@
-package org.example;
-
-import java.sql.Time;
+package org.example.model;
 
 public class Reservation {
     Insured insuredPerson;
     Timeslot timeslot;
-
+    Boolean isDone = false;
     public Reservation(Insured insuredPerson, Timeslot timeslot) {
         this.insuredPerson = insuredPerson;
         this.timeslot = timeslot;
@@ -21,5 +19,9 @@ public class Reservation {
     }
     public void setTimeslot(Timeslot timeslot) {
         this.timeslot = timeslot;
+    }
+
+    public void setDone(boolean b) {
+        isDone = b;
     }
 }

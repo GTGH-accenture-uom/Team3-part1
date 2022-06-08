@@ -1,4 +1,8 @@
-package org.example;
+package org.example.model;
+
+import org.example.model.Doctor;
+
+import java.time.LocalDate;
 
 public class Timeslot {
 
@@ -55,4 +59,8 @@ public class Timeslot {
     }
 
 
+    public LocalDate getLocalDate() {
+        return LocalDate.of(year,month,day);
+
+    }
 }
