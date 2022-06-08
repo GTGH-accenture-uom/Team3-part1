@@ -1,8 +1,11 @@
 package org.example;
 
+import org.example.model.Doctor;
 import org.example.model.Insured;
+import org.example.model.VaccinationCenter;
 import org.example.service.DoctorService;
 import org.example.service.InsuredService;
+import org.example.service.VaccinationCenterService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,5 +34,26 @@ public class Main {
             System.out.println(insured);
 
         }
+
+        DoctorService doctorService = new DoctorService();
+        doctorService.createDoctor("28088501568","Panagiotis","Panagiotidis");
+        doctorService.createDoctor("01028400368","Ioannis","Petrou");
+        doctorService.createDoctor("16048009878","Maria","Mitsiou");
+        doctorService.createDoctor("23068601368","Asterios","Papadopoulos");
+
+        for (Doctor doctor : doctorService.getAllDoctors()){
+            System.out.println(doctor);
+
+        }
+
+        VaccinationCenterService vaccinationCenterService = new VaccinationCenterService();
+        vaccinationCenterService.createVaccinationCenter("01","Konstantinoupolews 18");
+        vaccinationCenterService.createVaccinationCenter("02","Ippokratio 20");
+
+        for(VaccinationCenter vaccinationCenter : vaccinationCenterService.getAllCenters()){
+            System.out.println(vaccinationCenter);
+        }
+
+
     }
 }

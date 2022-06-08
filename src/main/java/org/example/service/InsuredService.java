@@ -13,7 +13,7 @@ such as the creation of an insured person.
  */
 public class InsuredService {
 
-    ArrayList<Insured> insuredList = new ArrayList<Insured>();
+   List<Insured> insuredList = new ArrayList<Insured>();
 
     //creates new Insured object and adds it to the list
     public void createInsured(String afm, String amka, String name, String surname, LocalDate birthdate, String email)

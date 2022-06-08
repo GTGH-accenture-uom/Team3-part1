@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Doctor {
-    String amka;
-    String name;
-    String surname;
-    ArrayList<Timeslot> timeslots;
-    ArrayList<Vaccination> vaccinations = new ArrayList<>();
+    private String amka;
+    private String name;
+    private String surname;
+    private ArrayList<Timeslot> timeslots;
+    private ArrayList<Vaccination> vaccinations = new ArrayList<>();
 
     public Doctor(String amka, String name, String surname, ArrayList<Timeslot> timeslots) {
         this.amka = amka;
@@ -37,6 +37,15 @@ public class Doctor {
 
     public void addTimeslot(Timeslot timeslot){
         this.timeslots.add(timeslot);
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "amka='" + amka + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 
     public void vaccinate(Reservation reservation){

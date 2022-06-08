@@ -9,6 +9,13 @@ public class VaccinationCenter {
 
     ArrayList<Reservation> reservations = new ArrayList<>();
 
+    public VaccinationCenter(String code, String address) {
+        this.code = code;
+        this.address = address;
+        this.timeslots = timeslots;
+        timeslots = new ArrayList<>();
+    }
+
     public VaccinationCenter(String code, String address, ArrayList<Timeslot> timeslots) {
         this.code = code;
         this.address = address;
@@ -45,6 +52,14 @@ public class VaccinationCenter {
 
     public ArrayList<Reservation> getReservations() {
         return reservations;
+    }
+
+    @Override
+    public String toString() {
+        return "VaccinationCenter{" +
+                "code='" + code + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 
     public void printOpenDates(){
