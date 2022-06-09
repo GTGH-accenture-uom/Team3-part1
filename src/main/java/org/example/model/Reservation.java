@@ -6,7 +6,7 @@ public class Reservation {
     Insured insuredPerson;
     Timeslot timeslot;
     Boolean isDone = false;
-    ArrayList<Reservation> reservations = new ArrayList<>();
+    ArrayList<Reservation> reservations = new ArrayList<>(); //αυτο γιατι;
 
     public Reservation(Insured insuredPerson, Timeslot timeslot) {
         this.insuredPerson = insuredPerson;

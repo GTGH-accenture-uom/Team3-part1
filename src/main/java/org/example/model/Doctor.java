@@ -21,7 +21,6 @@ public class Doctor {
         this.amka = amka;
         this.name = name;
         this.surname = surname;
-        this.timeslots = timeslots;
         timeslots = new ArrayList<>();
 
     }
@@ -48,12 +47,11 @@ public class Doctor {
                 '}';
     }
 
+    //AUTO THA PAEI STHN VACCINATION SERVICE!!! TODO
     public void vaccinate(Reservation reservation){
-        //todo setDone() method in reservation class
         reservation.setDone(true);
         Insured insured = reservation.getInsuredPerson();
         Timeslot timeslot = reservation.getTimeslot();
-        //TODO getLocalDate() method in timeslot Class
         LocalDate vacc_date = timeslot.getLocalDate();
         //set the expiration date two months after the vaccination date (subject to change)
         LocalDate expiration_date = vacc_date.plusMonths(2);
