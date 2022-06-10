@@ -7,8 +7,8 @@ public class VaccinationCenter {
     private String code;
     private String address;
     private ArrayList<Timeslot> timeslots;
-    //mallon den tha xreiastei auto edw
-    ArrayList<Reservation> reservations = new ArrayList<>();
+
+
 
     public VaccinationCenter(String code, String address) {
         this.code = code;
@@ -46,14 +46,6 @@ public class VaccinationCenter {
         this.timeslots = timeslots;
     }
 
-    public void setReservations(ArrayList<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public ArrayList<Reservation> getReservations() {
-        return reservations;
-    }
-
 
     @Override
     public String toString() {
@@ -63,20 +55,9 @@ public class VaccinationCenter {
                 '}';
     }
 
-    public void printOpenDates(){
-        System.out.println("The available dates of the " + code + " vaccination center are: ");
-        for (Reservation rev : reservations){
-            if (reservations.isEmpty()) {
-                continue;
-            }
-            System.out.println(timeslots);
-        }
-    }
-
-    //TODO
     //adds a new timeslot to the vaccination center
     public void addTimeslot(Timeslot timeslot){
-
+        timeslots.add(timeslot);
     }
 
 }
