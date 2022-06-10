@@ -2,18 +2,30 @@ package org.example.service;
 
 import org.example.model.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationService {
 
-    ArrayList<Reservation> reservationList = new ArrayList<>();
+    private ArrayList<Reservation> reservationList = new ArrayList<>();
+
+    public ReservationService() {
+    }
+
+    public ArrayList<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public void setReservationList(ArrayList<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
 
     /* creates a new reservation that an insured person made to a certain timeslot and adds it
     * to the list. Sets the corresponding timeslot isFree field to false so that it appears
     * as unavailable/booked*/
     public void createReservation(Insured insured, Timeslot timeslot, VaccinationCenter center){
-        reservationList.add(new Reservation(insured, timeslot,center));
+        reservationList.add(new Reservation(insured, timeslot.getDoctor(), timeslot,center));
         timeslot.setFree(false);
     }
 
@@ -31,5 +43,35 @@ public class ReservationService {
 
         }
         reservationsOfCenter.forEach(System.out::println);
+    }
+
+    public void showResOfDoctorByCenter(Doctor doctor, VaccinationCenter center) {
+        System.out.println("----------------------------");
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        System.out.println("Reservations of Dr " + doctor.getName()+ " " + doctor.getSurname()
+        + " of Center with code " + center.getCode());
+        for (Reservation reservation:reservationList) {
+            if (reservation.getDoctor().equals(doctor) &&
+                    reservation.getVaccinationCenter().equals(center)){
+                    reservations.add(reservation);
+            }
+
+        }
+        reservations.forEach(System.out::println);
+    }
+
+    public void showResOfDoctorByDay(Doctor doctor, LocalDate date) {
+        System.out.println("----------------------------");
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        System.out.println("Reservations of Dr " + doctor.getName()+ " " + doctor.getSurname()
+                + " on " + date);
+        for (Reservation reservation:reservationList) {
+            if (reservation.getDoctor().equals(doctor) &&
+                    reservation.getTimeslot().getLocalDate().equals(date)){
+                reservations.add(reservation);
+            }
+
+        }
+        reservations.forEach(System.out::println);
     }
 }

@@ -1,5 +1,6 @@
 package org.example.model;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 
 public class Reservation {
@@ -7,12 +8,23 @@ public class Reservation {
     Timeslot timeslot;
     Boolean isDone = false;
     VaccinationCenter vaccinationCenter;
+    Doctor doctor;
 
-    public Reservation(Insured insuredPerson, Timeslot timeslot,VaccinationCenter vaccinationCenter) {
+    public Reservation(Insured insuredPerson, Doctor doctor, Timeslot timeslot, VaccinationCenter vaccinationCenter) {
         this.insuredPerson = insuredPerson;
         this.timeslot = timeslot;
         this.vaccinationCenter = vaccinationCenter;
+        this.doctor = doctor;
     }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
     public Insured getInsuredPerson() {
         return insuredPerson;
     }

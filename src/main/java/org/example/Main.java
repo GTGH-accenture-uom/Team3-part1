@@ -54,8 +54,8 @@ public class Main {
         }
 
         ArrayList<Timeslot> timeslots = new ArrayList<>();
-        timeslots.add(new Timeslot(6,6,2022,12,30,30,40,doctorService.getAllDoctors().get(0)));
-        timeslots.add(new Timeslot(6,6,2022,12,40,40,50,doctorService.getAllDoctors().get(0)));
+        timeslots.add(new Timeslot(10,6,2022,12,30,30,40,doctorService.getAllDoctors().get(0)));
+        timeslots.add(new Timeslot(10,6,2022,12,40,40,50,doctorService.getAllDoctors().get(0)));
         timeslots.add(new Timeslot(6,6,2022,12,50,50,0,doctorService.getAllDoctors().get(0)));
         timeslots.add(new Timeslot(6,6,2022,1,30,30,40,doctorService.getAllDoctors().get(2)));
         timeslots.add(new Timeslot(6,6,2022,1,40,40,50,doctorService.getAllDoctors().get(2)));
@@ -82,6 +82,11 @@ public class Main {
         //Τα επικείμενα ραντεβού για κάθε εμβολιαστικό κέντρου
         reservationService.printReservationsOfCenter("01");
         reservationService.printReservationsOfCenter("02");
+
+        insuredService.printInsuredOverSixtyWithNoAppointment();
+
+        reservationService.showResOfDoctorByCenter(doctorService.getAllDoctors().get(0),vaccinationCenterService.getCenterByCode("01"));
+        reservationService.showResOfDoctorByDay(doctorService.getAllDoctors().get(0), LocalDate.now());
 
     }
 }
