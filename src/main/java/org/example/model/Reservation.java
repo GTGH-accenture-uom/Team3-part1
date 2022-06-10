@@ -6,11 +6,12 @@ public class Reservation {
     Insured insuredPerson;
     Timeslot timeslot;
     Boolean isDone = false;
-    ArrayList<Reservation> reservations = new ArrayList<>(); //αυτο γιατι;
+    VaccinationCenter vaccinationCenter;
 
-    public Reservation(Insured insuredPerson, Timeslot timeslot) {
+    public Reservation(Insured insuredPerson, Timeslot timeslot,VaccinationCenter vaccinationCenter) {
         this.insuredPerson = insuredPerson;
         this.timeslot = timeslot;
+        this.vaccinationCenter = vaccinationCenter;
     }
     public Insured getInsuredPerson() {
         return insuredPerson;
@@ -29,7 +30,25 @@ public class Reservation {
         isDone = b;
     }
 
+    public VaccinationCenter getVaccinationCenter() {
+        return vaccinationCenter;
+    }
 
+    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
+        this.vaccinationCenter = vaccinationCenter;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "insuredPerson=" + insuredPerson +
+                ", timeslot=" + timeslot +
+                ", isDone=" + isDone +
+                ", vaccinationCenter=" + vaccinationCenter +
+                '}';
+    }
+
+/*
     public void printFutureReservations(){
         System.out.println("The coming vaccination dates are: " );
         for (Reservation rev : reservations){
@@ -38,4 +57,6 @@ public class Reservation {
             }
         }
     }
+
+     */
 }

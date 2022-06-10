@@ -26,4 +26,13 @@ public class InsuredService {
     {
         return insuredList;
     }
+
+    public Insured getInsuredByAmka(String s) {
+        for (Insured insured:insuredList) {
+            if (insured.getAmka().equals(s))
+                return insured;
+
+        }
+        return null;
+    }
 }
