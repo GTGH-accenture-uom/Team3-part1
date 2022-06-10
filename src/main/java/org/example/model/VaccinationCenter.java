@@ -57,7 +57,7 @@ public class VaccinationCenter {
 
     //adds a new timeslot to the vaccination center
     public void addTimeslot(Timeslot timeslot){
-        timeslots.add(timeslot);
+        timeslots.add(timeslot );
     }
 
 }
