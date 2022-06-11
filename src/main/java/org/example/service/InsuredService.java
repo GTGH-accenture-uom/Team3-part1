@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.service.VaccinationService.getAllVaccinations;
+import static org.example.service.VaccinationService.*;
 
 /*
 This class represents the service for all the insured people.
@@ -32,7 +32,17 @@ public class InsuredService {
     }
 
     //ToDo
-    //Checks if the insured person's vaccination coverage has expired or not depending on the vaccination they had
-    public void checkHasCoverage(Insured insured){
+    //Checks and prints if the insured person's vaccination coverage has expired
+    // or not depending on the vaccination they had.
+    public void checkHasCoverage(Insured insured, Vaccination vaccination){
+         for(Vaccination vaccination1 : vaccinationsList )
+         {
+             if (vaccination1.getInsuredPerson().equals(insured) && (vaccination1.getExpirationDate().isAfter(LocalDate.now()))){
+                 System.out.println("Your vaccination certificate is still valid!");
+             }
+             else {
+                 System.out.println("Your vaccination coverage has expired!");
+             }
+         }
     }
 }

@@ -56,8 +56,9 @@ public class VaccinationCenter {
     }
 
     //adds a new timeslot to the vaccination center
-    public void addTimeslot(int day, int month, int year, int hour, int minutes, int startMinute, int endMinute, Doctor doctor){
-        timeslots.add(new Timeslot(day,month, year, hour, minutes, startMinute, endMinute,doctor) );
+    public void addTimeslot(Timeslot timeslot){
+        timeslots.add(timeslot);
+        timeslot.getDoctor().addTimeslot(timeslot);
     }
 
 }

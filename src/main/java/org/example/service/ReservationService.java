@@ -8,7 +8,5 @@ import java.util.ArrayList;
 public class ReservationService {
 
     static ArrayList<Reservation> reservationList = new ArrayList<>();
-    public void createReservation(){
 
-    }
 }
