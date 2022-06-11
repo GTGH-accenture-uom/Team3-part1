@@ -10,6 +10,7 @@ public class Doctor {
     private ArrayList<Timeslot> timeslots;
     private ArrayList<Vaccination> vaccinations = new ArrayList<>();
 
+
     public Doctor(String amka, String name, String surname, ArrayList<Timeslot> timeslots) {
         this.amka = amka;
         this.name = name;
@@ -38,6 +39,9 @@ public class Doctor {
         this.timeslots.add(timeslot);
     }
 
+    public void addVaccination(Vaccination vaccination){
+        vaccinations.add(vaccination);
+    }
     @Override
     public String toString() {
         return "Doctor{" +
@@ -47,22 +51,11 @@ public class Doctor {
                 '}';
     }
 
-    //AUTO THA PAEI STHN VACCINATION SERVICE!!! TODO
-    public void vaccinate(Reservation reservation){
-        reservation.setDone(true);
-        Insured insured = reservation.getInsuredPerson();
-        Timeslot timeslot = reservation.getTimeslot();
-        LocalDate vacc_date = timeslot.getLocalDate();
-        //set the expiration date two months after the vaccination date (subject to change)
-        LocalDate expiration_date = vacc_date.plusMonths(2);
-        Vaccination vaccination = new Vaccination(insured,this,vacc_date, expiration_date);
-        vaccinations.add(vaccination);
-        }
 
     public void printDoneVaccinations(){
         System.out.println("Vaccinations of Dr " + name +" " +surname +":");
         for (Vaccination vacc: vaccinations) {
-            System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getName());
+            System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getSurname());
         }
     }
 }
