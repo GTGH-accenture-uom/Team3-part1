@@ -1,10 +1,9 @@
 package org.example;
 
-import org.example.model.Doctor;
-import org.example.model.Insured;
-import org.example.model.VaccinationCenter;
+import org.example.model.*;
 import org.example.service.DoctorService;
 import org.example.service.InsuredService;
+import org.example.service.ReservationService;
 import org.example.service.VaccinationCenterService;
 
 import java.time.LocalDate;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        InsuredService insuredService = new InsuredService();
+       InsuredService insuredService = new InsuredService();
         insuredService.createInsured("162207556","18029704689","Konstantinos","Antoniadis", LocalDate.parse("1997-02-18"),"kon.anton@gmail.com");
         insuredService.createInsured("108204866","24121101368","Euaggelia","Ilioudi", LocalDate.parse("2011-12-24"),"eua.iliou@gmail.com");
         insuredService.createInsured("503307568","28083504789","Stefanos","Papakonstantinou", LocalDate.parse("1935-08-28"),"stef.pap@gmail.com");
@@ -30,29 +29,83 @@ public class Main {
         insuredService.createInsured("501903374","26048108643","Panagiotis","Karathanos", LocalDate.parse("1981-04-26"),"pan.karath@gmail.com");
 
         //print all insured
-        for (Insured insured : insuredService.getAllInsured()) {
+        for (Insured insured : insuredService.getInsuredMap().values()) {
             System.out.println(insured);
 
         }
 
-        DoctorService doctorService = new DoctorService();
-        doctorService.createDoctor("28088501568","Panagiotis","Panagiotidis");
-        doctorService.createDoctor("01028400368","Ioannis","Petrou");
-        doctorService.createDoctor("16048009878","Maria","Mitsiou");
-        doctorService.createDoctor("23068601368","Asterios","Papadopoulos");
 
-        for (Doctor doctor : doctorService.getAllDoctors()){
+
+        DoctorService doctorService = new DoctorService();
+        //  doctorService.createDoctor("28088501568","Panagiotis","Panagiotidis");
+        //  doctorService.createDoctor("01028400368","Ioannis","Petrou");
+        //  doctorService.createDoctor("16048009878","Maria","Mitsiou");
+       //  doctorService.createDoctor("23068601368","Asterios","Papadopoulos");
+        Doctor doc01 = new Doctor("28088501568","Panagiotis","Panagiotidis");
+        Doctor doc02 = new Doctor("01028400368","Ioannis","Petrou");
+        Doctor doc03 = new Doctor("16048009878","Maria","Mitsiou");
+        Doctor doc04 = new Doctor("23068601368","Asterios","Papadopoulos");
+
+     for (Doctor doctor : doctorService.getAllDoctors()){
             System.out.println(doctor);
 
         }
 
-        VaccinationCenterService vaccinationCenterService = new VaccinationCenterService();
-        vaccinationCenterService.createVaccinationCenter("01","Konstantinoupolews 18");
-        vaccinationCenterService.createVaccinationCenter("02","Ippokratio 20");
 
-        for(VaccinationCenter vaccinationCenter : vaccinationCenterService.getAllCenters()){
-            System.out.println(vaccinationCenter);
+
+
+        VaccinationCenterService vaccinationCenterService = new VaccinationCenterService();
+       // vaccinationCenterService.createVaccinationCenter("01","Konstantinoupolews 18");
+       // vaccinationCenterService.createVaccinationCenter("02","Ippokratio 20");
+        VaccinationCenter center01 = new VaccinationCenter("01","konstantinoupoleos 18");
+        VaccinationCenter center02 = new VaccinationCenter("02","Ipokratio 20");
+
+       for(VaccinationCenter vaccinationCenter : vaccinationCenterService.getAllCenters()){
+        System.out.println(vaccinationCenter);
+       }
+
+
+
+
+        Timeslot t01= new Timeslot(6,5,2022,18,00,01,20,doc01);
+        Timeslot t02= new Timeslot(9,4,2022,12,10,11,30,doc01);
+        Timeslot t03= new Timeslot(2,3,2022,8,05,06,26,doc01);
+        Timeslot t04= new Timeslot(22,12,2021,9,15,16,30,doc01);
+        Timeslot t05= new Timeslot(7,11,2021,19,20,21,40,doc01);
+        Timeslot t06= new Timeslot(30,5,2022,12,50,51,10,doc01);
+        Timeslot t07= new Timeslot(12,6,2022,2,00,01,15,doc01);
+        Timeslot t08= new Timeslot(1,7,2021,9,30,31,50,doc01);
+        Timeslot t09= new Timeslot(4,8,2021,20,10,11,30,doc01);
+        Timeslot t10= new Timeslot(10,10,2021,10,20,21,40,doc01);
+
+
+
+
+
+        ReservationService reservationService = new ReservationService();
+        reservationService.createReservation(insuredService.getInsuredMap().get("18029704689"),t01,center01);
+        reservationService.createReservation(insuredService.getInsuredMap().get("24121101368"),t02,center01);
+        reservationService.createReservation(insuredService.getInsuredMap().get("28083504789"),t03,center01);
+        reservationService.createReservation(insuredService.getInsuredMap().get("01074807816"),t04,center01);
+        reservationService.createReservation(insuredService.getInsuredMap().get("19036504689"),t05,center02);
+        reservationService.createReservation(insuredService.getInsuredMap().get("28090801369"),t06,center02);
+        reservationService.createReservation(insuredService.getInsuredMap().get("05037604637"),t07,center02);
+        reservationService.createReservation(insuredService.getInsuredMap().get("26048108643"),t08,center02);
+
+
+
+        for(Reservation res : reservationService.getAllRes()){
+            System.out.println(res);
         }
+        //omws an mpei la8os amka skaei o kwdikas me nullexception
+        reservationService.deleteReservation(insuredService.getInsuredMap().get("24121101368"), t02);
+
+        System.out.println("---------------------");
+
+        for(Reservation res : reservationService.getAllRes()){
+            System.out.println(res);
+        }
+
 
 
     }
