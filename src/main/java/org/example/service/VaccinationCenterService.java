@@ -1,6 +1,7 @@
 
 package org.example.service;
 
+import java.time.temporal.JulianFields;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,16 +33,21 @@ public class VaccinationCenterService {
     }
 
     //printFreeTimeslots prints all the available timeslots of the center with code s
-    public void printFreeTimeslots(String s) {
+    public List<String> printFreeTimeslots(String s) {
+        List<String> results = new ArrayList<>();
         for (VaccinationCenter center : vaccinationCenterList) {
             if (center.getCode().equals(s)) {
-                System.out.println("The available timeslots of Center with code " +center.getCode() + ":");
+                results.add("The available timeslots of Center with code " +center.getCode() + ":");
+                System.out.println(results.get(0));
                 for (Timeslot timeslot: center.getTimeslots()) {
-                    if (timeslot.isFree())
+                    if (timeslot.isFree()) {
                         System.out.println(timeslot);
+                        results.add(timeslot.toString());
+                    }
                 }
             }
         }
+        return results;
     }
 
     public VaccinationCenter getCenterByCode(String s) {

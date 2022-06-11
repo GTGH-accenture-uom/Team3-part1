@@ -34,15 +34,19 @@ public class ReservationService {
     This method returns the reservations made to a certain Vaccinations Center, based
     on  the code given as a parameter.
      */
-    public void printReservationsOfCenter(String s) {
-        System.out.println("The reservations of center with code " + s + ":");
+    public List<String> printReservationsOfCenter(String s) {
+        List<String> result = new ArrayList<>();
+        result.add("The reservations of center with code " + s + ":");
+        System.out.println(result.get(0));
         List<Reservation> reservationsOfCenter = new ArrayList<>();
         for (Reservation reservation : reservationList) {
-            if (reservation.getVaccinationCenter().getCode().equals(s))
+            if (reservation.getVaccinationCenter().getCode().equals(s)) {
                 reservationsOfCenter.add(reservation);
-
+                result.add(reservation.toString());
+            }
         }
         reservationsOfCenter.forEach(System.out::println);
+        return  result;
     }
 
     public void showResOfDoctorByCenter(Doctor doctor, VaccinationCenter center) {

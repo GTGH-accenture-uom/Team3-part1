@@ -5,6 +5,7 @@ import org.example.service.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -101,33 +102,46 @@ public class Main {
 
        //make vaccinations for 6 out of 8 reservations
         VaccinationService vaccinationService = new VaccinationService();
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(0));
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(1));
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(2));
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(3));
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(4));
-        vaccinationService.makeVaccination(reservationService.getReservationList().get(5));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(0));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(1));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(2));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(3));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(4));
+        vaccinationService.makeVaccination(ReservationService.getReservationList().get(5));
+
+        //create a new txt file to store the results
+        FileParser fileParser = new FileParser();
+        fileParser.createFile("results.txt");
+
+        //Results
 
         //Τα επικείμενα ραντεβού για κάθε εμβολιαστικό κέντρου
-        reservationService.printReservationsOfCenter("01");
-        reservationService.printReservationsOfCenter("02");
+        List<String> results = reservationService.printReservationsOfCenter("01");
+        fileParser.writeToFile(results);
+        results = reservationService.printReservationsOfCenter("02");
+        fileParser.writeToFile(results);
+
 
         //Τις ελεύθερες χρονικές θυρίδες κάθε εμβολιαστικού κέντρου
         System.out.println("-------------------------------");
-        vaccinationCenterService.printFreeTimeslots("01");
-        vaccinationCenterService.printFreeTimeslots("02");
+        results = vaccinationCenterService.printFreeTimeslots("01");
+        fileParser.writeToFile(results);
+        results = vaccinationCenterService.printFreeTimeslots("02");
+        fileParser.writeToFile(results);
 
         //Τους εμβολιασμούς (ημερομηνία εμβολιασμού και ονοματεπώνυμο ασφαλισμένου) που
         //πραγματοποίησε κάθε γιατρός, για όλους τους γιατρούς.
+        results.clear();
         System.out.println("-------------------------");
         for (Doctor doctor:doctorService.getAllDoctors()) {
-           doctor.printDoneVaccinations();
+           results = doctor.printDoneVaccinations();
+           fileParser.writeToFile(results);
         }
-
 
         //Τους ασφαλισμένους άνω των 60 ετών που δεν έχουν κλείσει ραντεβού για εμβολιασμό.
         System.out.println("----------------------------");
-        insuredService.printInsuredOverSixtyWithNoAppointment();
+        results = insuredService.printInsuredOverSixtyWithNoAppointment();
+        fileParser.writeToFile(results);
 
     }
 }

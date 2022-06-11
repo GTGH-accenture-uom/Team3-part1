@@ -45,7 +45,9 @@ public class InsuredService {
     and then checks if that specific person exists in a reservation object of the reservationsList from
     the reservationService class.
      */
-    public void printInsuredOverSixtyWithNoAppointment() {
+    public List<String> printInsuredOverSixtyWithNoAppointment() {
+        List<String> results = new ArrayList<>();
+        results.add("Insured people over the age of 60 that have not made a reservation: ");
         boolean hasAppointment = false;
         ArrayList<Insured> eligibleInsured = new ArrayList<>();
         for (Insured insured:insuredList) {
@@ -58,14 +60,15 @@ public class InsuredService {
                 }
                 if (!hasAppointment) {
                     eligibleInsured.add(insured);
+                    results.add(insured.toString());
             }
 
             }
             hasAppointment = false;
         }
-        System.out.println("-------------------------------------------\n");
-        System.out.println("Insured people over the age of 60 that have not made a reservation: ");
+        System.out.println(results.get(0));
         eligibleInsured.forEach(System.out::println);
+        return results;
     }
 
     //ToDo

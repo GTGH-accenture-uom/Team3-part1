@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Doctor {
     private String amka;
@@ -52,10 +53,14 @@ public class Doctor {
     }
 
 
-    public void printDoneVaccinations(){
-        System.out.println("Vaccinations of Dr " + name +" " +surname +":");
+    public List<String> printDoneVaccinations(){
+        List<String> results = new ArrayList<>();
+        results.add("Vaccinations of Dr " + name +" " +surname +":");
+        System.out.println(results.get(0));
         for (Vaccination vacc: vaccinations) {
+            results.add((vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getSurname()).toString());
             System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getSurname());
         }
+        return results;
     }
 }
