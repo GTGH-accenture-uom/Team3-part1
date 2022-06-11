@@ -2,13 +2,15 @@ package org.example.service;
 
 import lombok.Data;
 import org.example.model.Insured;
+import org.example.model.Vaccination;
+import org.example.model.VaccinationCenter;
 import org.example.model.Reservation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.example.service.VaccinationService.getAllVaccinations;
 
 /*
 This class represents the service for all the insured people.
@@ -18,19 +20,23 @@ such as the creation of an insured person.
 @Data
 public class InsuredService {
 
-   Map<String,Insured> insuredMap = new HashMap<>();
+   List<Insured> insuredList = new ArrayList<Insured>();
 
-    //creates new Insured object and adds it to the map
-    //map anti gia list wste na mporw na ta kalw sthn main px sthn createReservation
+    //creates new Insured object and adds it to the list
     public void createInsured(String afm, String amka, String name, String surname, LocalDate birthdate, String email)
     {
-        insuredMap.put(amka,new Insured(afm, amka ,name, surname,birthdate, email ));
+        insuredList.add(new Insured(afm, amka ,name, surname,birthdate, email ));
     }
 
     //Returns the list with all the insured people.
     public List<Insured> getAllInsured()
     {
         return insuredList;
+    }
+
+    //ToDo
+    //Checks if the insured person's vaccination coverage has expired or not depending on the vaccination they had
+    public void checkHasCoverage(Insured insured){
     }
 
     public Insured getInsuredByAmka(String s) {

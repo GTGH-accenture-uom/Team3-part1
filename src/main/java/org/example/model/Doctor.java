@@ -57,4 +57,5 @@ public class Doctor {
             System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getName());
         }
     }
+
 }
