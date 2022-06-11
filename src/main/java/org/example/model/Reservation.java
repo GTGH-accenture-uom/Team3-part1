@@ -1,5 +1,7 @@
 package org.example.model;
 
+import javax.print.Doc;
+import java.util.ArrayList;
 import lombok.Data;
 
 @Data

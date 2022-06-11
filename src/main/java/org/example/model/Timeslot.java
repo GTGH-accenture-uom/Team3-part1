@@ -14,6 +14,8 @@ public class Timeslot {
     private int startMinute;
     private int endMinute;
     Doctor doctor;
+    /* isFree is true when the timeslot is free/available and false when it has been booked*/
+    private boolean isFree;
 
 
     public Timeslot(int day, int month, int year, int hour, int minutes, int startMinute, int endMinute, Doctor doctor) {
@@ -25,6 +27,7 @@ public class Timeslot {
         this.startMinute = startMinute;
         this.endMinute = endMinute;
         this.doctor = doctor;
+        isFree = true;
     }
 
     public int getDay() {return day;}
@@ -44,6 +47,14 @@ public class Timeslot {
     public void setEndMinute(int endMinute) {this.endMinute = endMinute;}
     public void setDoctor(Doctor doctor) {this.doctor = doctor;}
 
+    public boolean isFree() {
+        return isFree;
+    }
+
+    public void setFree(boolean free) {
+        isFree = free;
+    }
+
     @Override
     public String toString() {
         return "Timeslot{" +
@@ -57,7 +68,6 @@ public class Timeslot {
                 ", doctor=" + doctor +
                 '}';
     }
-
 
     public LocalDate getLocalDate() {
         return LocalDate.of(year,month,day);

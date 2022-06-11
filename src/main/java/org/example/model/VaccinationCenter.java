@@ -73,9 +73,11 @@ public class VaccinationCenter {
         }
     }
 
-    //TODO
+
     //adds a new timeslot to the vaccination center
     public void addTimeslot(Timeslot timeslot){
+        timeslots.add(timeslot);
+        timeslot.getDoctor().addTimeslot(timeslot);
 
     }
 

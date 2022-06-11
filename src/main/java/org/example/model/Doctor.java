@@ -38,6 +38,9 @@ public class Doctor {
         this.timeslots.add(timeslot);
     }
 
+    public void addVaccination(Vaccination vaccination){
+        vaccinations.add(vaccination);
+    }
     @Override
     public String toString() {
         return "Doctor{" +
@@ -47,17 +50,6 @@ public class Doctor {
                 '}';
     }
 
-    //AUTO THA PAEI STHN VACCINATION SERVICE!!! TODO
-    public void vaccinate(Reservation reservation){
-        reservation.setDone(true);
-        Insured insured = reservation.getInsuredPerson();
-        Timeslot timeslot = reservation.getTimeslot();
-        LocalDate vacc_date = timeslot.getLocalDate();
-        //set the expiration date two months after the vaccination date (subject to change)
-        LocalDate expiration_date = vacc_date.plusMonths(2);
-        Vaccination vaccination = new Vaccination(insured,this,vacc_date, expiration_date);
-        vaccinations.add(vaccination);
-        }
 
     public void printDoneVaccinations(){
         System.out.println("Vaccinations of Dr " + name +" " +surname +":");
