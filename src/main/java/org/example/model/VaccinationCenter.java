@@ -1,14 +1,18 @@
 package org.example.model;
 
+import lombok.Data;
+
 import java.sql.Time;
 import java.util.ArrayList;
-
+import java.util.List;
+@Data
 public class VaccinationCenter {
     private String code;
     private String address;
-    private ArrayList<Timeslot> timeslots;
+    private List<Timeslot> timeslots;
+    private List<Doctor> doctorList;
     //mallon den tha xreiastei auto edw
-    ArrayList<Reservation> reservations = new ArrayList<>();
+   // ArrayList<Reservation> reservations = new ArrayList<>();
 
     public VaccinationCenter(String code, String address) {
         this.code = code;
@@ -38,7 +42,7 @@ public class VaccinationCenter {
         this.address = address;
     }
 
-    public ArrayList<Timeslot> getTimeslots() {
+    public List<Timeslot> getTimeslots() {
         return timeslots;
     }
 
@@ -46,13 +50,6 @@ public class VaccinationCenter {
         this.timeslots = timeslots;
     }
 
-    public void setReservations(ArrayList<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public ArrayList<Reservation> getReservations() {
-        return reservations;
-    }
 
 
     @Override
@@ -63,22 +60,17 @@ public class VaccinationCenter {
                 '}';
     }
 
-    public void printOpenDates(){
-        System.out.println("The available dates of the " + code + " vaccination center are: ");
-        for (Reservation rev : reservations){
-            if (reservations.isEmpty()) {
-                continue;
-            }
-            System.out.println(timeslots);
-        }
-    }
+
+
 
 
     //adds a new timeslot to the vaccination center
     public void addTimeslot(Timeslot timeslot){
         timeslots.add(timeslot);
-        timeslot.getDoctor().addTimeslot(timeslot);
+    }
 
+    public void addDoctorToCenter(Doctor doctor){
+        doctorList.add(doctor);
     }
 
 }

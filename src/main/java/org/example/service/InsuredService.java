@@ -28,6 +28,8 @@ public class InsuredService {
         insuredList.add(new Insured(afm, amka ,name, surname,birthdate, email ));
     }
 
+
+
     //Returns the list with all the insured people.
     public List<Insured> getAllInsured()
     {

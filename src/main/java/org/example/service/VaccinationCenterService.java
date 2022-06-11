@@ -32,17 +32,18 @@ public class VaccinationCenterService {
     }
 
     //printFreeTimeslots prints all the available timeslots of the center with code s
-    public void printFreeTimeslots(String s) {
-        for (VaccinationCenter center : vaccinationCenterList) {
-            if (center.getCode().equals(s)) {
-                System.out.println("The available timeslots of Center with code " +center.getCode() + ":");
-                for (Timeslot timeslot: center.getTimeslots()) {
-                    if (timeslot.isFree())
-                        System.out.println(timeslot);
-                }
-            }
-        }
-    }
+    //h ylopoihsh exei ginei sto ReservationService --> printAvTimePerCenter
+//    public void printFreeTimeslots(String s) {
+//        for (VaccinationCenter center : vaccinationCenterList) {
+//            if (center.getCode().equals(s)) {
+//                System.out.println("The available timeslots of Center with code " +center.getCode() + ":");
+//                for (Timeslot timeslot: center.getTimeslots()) {
+//                    if (timeslot.isFree())
+//                        System.out.println(timeslot);
+//                }
+//            }
+//        }
+//    }
 
     public VaccinationCenter getCenterByCode(String s) {
         for (VaccinationCenter vaccinationCenter:vaccinationCenterList) {

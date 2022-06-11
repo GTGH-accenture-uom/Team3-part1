@@ -8,14 +8,13 @@ import java.util.List;
 
 public class VaccinationService {
 
-    private static ArrayList<Vaccination> vaccinationslist = new ArrayList<>();
+    private static List<Vaccination> vaccinationslist = new ArrayList<>();
 
     public static List<Vaccination> getAllVaccinations() {
         return vaccinationslist;
     }
 
     public void vaccinate(Reservation reservation, Doctor doctor){
-        reservation.setDone(true);
         Insured insured = reservation.getInsuredPerson();
         Timeslot timeslot = reservation.getTimeslot();
         LocalDate vacc_date = timeslot.getLocalDate();
@@ -28,10 +27,8 @@ public class VaccinationService {
 
 
     public void makeVaccination(Reservation reservation, Doctor doctor){
-        reservation.setDone(true);
         LocalDate expiration_date = reservation.getTimeslot().getLocalDate().plusMonths(2);
         Vaccination vacc = new Vaccination(reservation.getInsuredPerson(), doctor,reservation.getTimeslot().getLocalDate(), expiration_date);
         vaccinationslist.add(vacc);
-        doctor.addVaccination(vacc);
     }
 }
