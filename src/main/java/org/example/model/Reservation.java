@@ -1,41 +1,31 @@
 package org.example.model;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+@Data
 public class Reservation {
     Insured insuredPerson;
     Timeslot timeslot;
     Boolean isDone = false;
-    ArrayList<Reservation> reservations = new ArrayList<>(); //αυτο γιατι;
+    VaccinationCenter vaccinationCenter;
+    Doctor doctor;
 
-    public Reservation(Insured insuredPerson, Timeslot timeslot) {
+    public Reservation(Insured insuredPerson, Doctor doctor, Timeslot timeslot, VaccinationCenter vaccinationCenter) {
         this.insuredPerson = insuredPerson;
         this.timeslot = timeslot;
-    }
-    public Insured getInsuredPerson() {
-        return insuredPerson;
-    }
-    public void setInsuredPerson(Insured insuredPerson) {
-        this.insuredPerson = insuredPerson;
-    }
-    public Timeslot getTimeslot() {
-        return timeslot;
-    }
-    public void setTimeslot(Timeslot timeslot) {
-        this.timeslot = timeslot;
-    }
-
-    public void setDone(boolean b) {
-        isDone = b;
+        this.vaccinationCenter = vaccinationCenter;
+        this.doctor=doctor;
     }
 
 
-    public void printFutureReservations(){
-        System.out.println("The coming vaccination dates are: " );
-        for (Reservation rev : reservations){
-            if (!reservations.isEmpty()){
-                System.out.println(timeslot);
-            }
-        }
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "insuredPerson=" + insuredPerson +
+                ", timeslot=" + timeslot +
+                ", isDone=" + isDone +
+                ", vaccinationCenter=" + vaccinationCenter +
+                ", doctor=" + doctor +
+                '}';
     }
 }
