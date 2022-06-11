@@ -2,6 +2,8 @@ package org.example.service;
 
 import org.example.model.Insured;
 import org.example.model.Reservation;
+import org.example.model.Vaccination;
+import org.example.model.VaccinationCenter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ such as the creation of an insured person.
  */
 public class InsuredService {
 
-   List<Insured> insuredList = new ArrayList<Insured>();
+   private List<Insured> insuredList = new ArrayList<Insured>();
 
     //creates new Insured object and adds it to the list
     public void createInsured(String afm, String amka, String name, String surname, LocalDate birthdate, String email)
@@ -44,12 +46,11 @@ public class InsuredService {
     the reservationService class.
      */
     public void printInsuredOverSixtyWithNoAppointment() {
-        ReservationService reservationService = new ReservationService();
         boolean hasAppointment = false;
         ArrayList<Insured> eligibleInsured = new ArrayList<>();
         for (Insured insured:insuredList) {
             if (LocalDate.now().getYear()- insured.getBirthdate().getYear() >= 60) {
-                for (Reservation res : reservationService.getReservationList()) {
+                for (Reservation res : ReservationService.getReservationList()) {
                     if (res.getInsuredPerson().equals(insured)) {
                         hasAppointment = true;
                         break;
@@ -60,9 +61,26 @@ public class InsuredService {
             }
 
             }
+            hasAppointment = false;
         }
         System.out.println("-------------------------------------------\n");
         System.out.println("Insured people over the age of 60 that have not made a reservation: ");
         eligibleInsured.forEach(System.out::println);
     }
+
+    //ToDo
+    //Checks and prints if the insured person's vaccination coverage has expired
+    // or not depending on the vaccination they had.
+    public void checkHasCoverage(Insured insured){
+        for(Vaccination vaccination1 : VaccinationService.getVaccinationslist() )
+        {
+            if (vaccination1.getInsuredPerson().equals(insured) && (vaccination1.getExpirationDate().isAfter(LocalDate.now()))){
+                System.out.println("Your vaccination certificate is still valid!");
+            }
+            else {
+                System.out.println("Your vaccination coverage has expired!");
+            }
+        }
+    }
+
 }

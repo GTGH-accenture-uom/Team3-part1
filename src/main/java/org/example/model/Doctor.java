@@ -10,6 +10,7 @@ public class Doctor {
     private ArrayList<Timeslot> timeslots;
     private ArrayList<Vaccination> vaccinations = new ArrayList<>();
 
+
     public Doctor(String amka, String name, String surname, ArrayList<Timeslot> timeslots) {
         this.amka = amka;
         this.name = name;
@@ -54,7 +55,7 @@ public class Doctor {
     public void printDoneVaccinations(){
         System.out.println("Vaccinations of Dr " + name +" " +surname +":");
         for (Vaccination vacc: vaccinations) {
-            System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getName());
+            System.out.println(vacc.getVaccinationDate() +" : " +vacc.getInsuredPerson().getName() + " " + vacc.getInsuredPerson().getSurname());
         }
     }
 }

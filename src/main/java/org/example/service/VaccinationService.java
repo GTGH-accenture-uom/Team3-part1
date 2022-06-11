@@ -1,22 +1,38 @@
 package org.example.service;
 
-import org.example.model.Doctor;
 import org.example.model.Insured;
 import org.example.model.Reservation;
 import org.example.model.Vaccination;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VaccinationService {
 
-    private static ArrayList<Vaccination> vaccinationslist;
+    private static List<Vaccination> vaccinationslist = new ArrayList<>();
 
-    public void makeVaccination(Reservation reservation, Doctor doctor){
+    public void makeVaccination(Reservation reservation){
         reservation.setDone(true);
         LocalDate expiration_date = reservation.getTimeslot().getLocalDate().plusMonths(2);
-        Vaccination vacc = new Vaccination(reservation.getInsuredPerson(), doctor,reservation.getTimeslot().getLocalDate(), expiration_date);
+        Vaccination vacc = new Vaccination(reservation.getInsuredPerson(), reservation.getDoctor(),reservation.getTimeslot().getLocalDate(), expiration_date);
         vaccinationslist.add(vacc);
-        doctor.addVaccination(vacc);
+        reservation.getDoctor().addVaccination(vacc);
+    }
+
+    public static List<Vaccination> getVaccinationslist() {
+        return vaccinationslist;
+    }
+
+    public static void setVaccinationslist(ArrayList<Vaccination> vaccinationslist) {
+        VaccinationService.vaccinationslist = vaccinationslist;
+    }
+
+    public Vaccination getVaccinationbyInsured(Insured insuredPerson) {
+        for (Vaccination vaccination:vaccinationslist) {
+            if (vaccination.getInsuredPerson().equals(insuredPerson))
+                    return vaccination;
+        }
+        return null;
     }
 }

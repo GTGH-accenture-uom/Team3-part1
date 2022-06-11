@@ -9,7 +9,7 @@ import org.example.model.Timeslot;
 import org.example.model.VaccinationCenter;
 
 public class VaccinationCenterService {
-    List<VaccinationCenter> vaccinationCenterList = new ArrayList();
+    private List<VaccinationCenter> vaccinationCenterList = new ArrayList();
 
     public VaccinationCenterService() {
     }
@@ -49,6 +49,16 @@ public class VaccinationCenterService {
             if (vaccinationCenter.getCode().equals(s))
                 return vaccinationCenter;
 
+        }
+        return null;
+    }
+
+    public VaccinationCenter getCenterByTimeslot(Timeslot timeslot) {
+        for (VaccinationCenter vaccinationCenter:vaccinationCenterList) {
+            for (Timeslot t:vaccinationCenter.getTimeslots()) {
+                if (t.equals(timeslot))
+                    return vaccinationCenter;
+            }
         }
         return null;
     }
