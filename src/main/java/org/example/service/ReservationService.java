@@ -6,6 +6,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+This class represents the service for all the reservations.
+It contains a list of all the reservations, and some needed methods
+such as the creation of a reservation.
+ */
+
 public class ReservationService {
 
     private static List<Reservation> reservationList = new ArrayList<>();
@@ -49,6 +55,8 @@ public class ReservationService {
         return  result;
     }
 
+    /*This method shows all the reservations that each doctor has in each center
+     */
     public void showResOfDoctorByCenter(Doctor doctor, VaccinationCenter center) {
         System.out.println("----------------------------");
         ArrayList<Reservation> reservations = new ArrayList<>();
@@ -64,6 +72,9 @@ public class ReservationService {
         reservations.forEach(System.out::println);
     }
 
+
+    /*This method shows all the reservations that each doctor has every day
+     */
     public void showResOfDoctorByDay(Doctor doctor, LocalDate date) {
         System.out.println("----------------------------");
         ArrayList<Reservation> reservations = new ArrayList<>();

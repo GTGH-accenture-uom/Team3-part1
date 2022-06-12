@@ -9,6 +9,11 @@ import org.example.model.Insured;
 import org.example.model.Timeslot;
 import org.example.model.VaccinationCenter;
 
+/*
+This class represents the service for all the vaccination centers.
+It contains a list of all the vaccination centers, and some needed methods
+such the creation of a vaccination center.
+ */
 public class VaccinationCenterService {
     private List<VaccinationCenter> vaccinationCenterList = new ArrayList();
 
@@ -23,6 +28,7 @@ public class VaccinationCenterService {
         return this.vaccinationCenterList;
     }
 
+    //This method prints all the timeslot of the center with code s
     public void printTimeslotsOfCenter(String s) {
         for (VaccinationCenter center : vaccinationCenterList) {
             if (center.getCode().equals(s)) {
@@ -50,6 +56,7 @@ public class VaccinationCenterService {
         return results;
     }
 
+    //This method returns the vaccination center with code s
     public VaccinationCenter getCenterByCode(String s) {
         for (VaccinationCenter vaccinationCenter:vaccinationCenterList) {
             if (vaccinationCenter.getCode().equals(s))
@@ -58,6 +65,8 @@ public class VaccinationCenterService {
         }
         return null;
     }
+
+    //This method returns the vaccination center with the specific timeslot
 
     public VaccinationCenter getCenterByTimeslot(Timeslot timeslot) {
         for (VaccinationCenter vaccinationCenter:vaccinationCenterList) {

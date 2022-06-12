@@ -8,6 +8,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+This class represents the service for all the vaccinations.
+It contains a list of all the vaccination , and some needed methods
+such the creation of a vaccination.
+ */
 public class VaccinationService {
 
     private static List<Vaccination> vaccinationslist = new ArrayList<>();
@@ -28,6 +33,8 @@ public class VaccinationService {
         VaccinationService.vaccinationslist = vaccinationslist;
     }
 
+
+    //This method returns the vaccination of each insured people.
     public Vaccination getVaccinationbyInsured(Insured insuredPerson) {
         for (Vaccination vaccination:vaccinationslist) {
             if (vaccination.getInsuredPerson().equals(insuredPerson))
@@ -35,4 +42,5 @@ public class VaccinationService {
         }
         return null;
     }
+
 }
