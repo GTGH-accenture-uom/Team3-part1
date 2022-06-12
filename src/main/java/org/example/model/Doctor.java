@@ -8,11 +8,11 @@ public class Doctor {
     private String amka;
     private String name;
     private String surname;
-    private ArrayList<Timeslot> timeslots;
-    private ArrayList<Vaccination> vaccinations = new ArrayList<>();
+    private List<Timeslot> timeslots;
+    private List<Vaccination> vaccinations = new ArrayList<>();
 
 
-    public Doctor(String amka, String name, String surname, ArrayList<Timeslot> timeslots) {
+    public Doctor(String amka, String name, String surname, List<Timeslot> timeslots) {
         this.amka = amka;
         this.name = name;
         this.surname = surname;
@@ -33,8 +33,10 @@ public class Doctor {
     public void setName(String name) {this.name = name;}
     public String getSurname() {return surname;}
     public void setSurname(String surname) {this.surname = surname;}
-    public ArrayList<Timeslot> getTimeslots() {return timeslots;}
-    public void setTimeslots(ArrayList<Timeslot> timeslots) {this.timeslots = timeslots;}
+
+    public List<Timeslot> getTimeslots() { return timeslots; }
+
+    public void setTimeslots(List<Timeslot> timeslots) {this.timeslots = timeslots;}
 
     public void addTimeslot(Timeslot timeslot){
         this.timeslots.add(timeslot);
@@ -43,6 +45,7 @@ public class Doctor {
     public void addVaccination(Vaccination vaccination){
         vaccinations.add(vaccination);
     }
+
     @Override
     public String toString() {
         return "Doctor{" +
@@ -52,7 +55,7 @@ public class Doctor {
                 '}';
     }
 
-
+    //This method is used to print the vaccinations done by the doctor
     public List<String> printDoneVaccinations(){
         List<String> results = new ArrayList<>();
         results.add("Vaccinations of Dr " + name +" " +surname +":");

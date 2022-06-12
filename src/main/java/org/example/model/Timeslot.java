@@ -68,7 +68,7 @@ public class Timeslot {
                 ", doctor=" + doctor +
                 '}';
     }
-
+    //Gets the local date
     public LocalDate getLocalDate() {
         return LocalDate.of(year,month,day);
 

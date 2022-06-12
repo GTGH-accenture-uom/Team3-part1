@@ -60,15 +60,5 @@ public class Reservation {
                 '}';
     }
 
-/*
-    public void printFutureReservations(){
-        System.out.println("The coming vaccination dates are: " );
-        for (Reservation rev : reservations){
-            if (!reservations.isEmpty()){
-                System.out.println(timeslot);
-            }
-        }
-    }
 
-     */
 }

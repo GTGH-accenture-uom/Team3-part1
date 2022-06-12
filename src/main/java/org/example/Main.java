@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        //Creating all the insured civilians
         InsuredService insuredService = new InsuredService();
         insuredService.createInsured("162207556","18029704689","Konstantinos","Antoniadis", LocalDate.parse("1997-02-18"),"kon.anton@gmail.com");
         insuredService.createInsured("108204866","24121101368","Euaggelia","Ilioudi", LocalDate.parse("2011-12-24"),"eua.iliou@gmail.com");
@@ -26,10 +27,12 @@ public class Main {
         insuredService.createInsured("664201431","15064701124","Vaios","Xitsas", LocalDate.parse("1947-06-15"),"vag.xits@gmail.com");
         insuredService.createInsured("501903374","26048108643","Panagiotis","Karathanos", LocalDate.parse("1981-04-26"),"pan.karath@gmail.com");
 
+        //Create the Vaccination centers
         VaccinationCenterService vaccinationCenterService = new VaccinationCenterService();
         vaccinationCenterService.createVaccinationCenter("01","Konstantinoupolews 18");
         vaccinationCenterService.createVaccinationCenter("02","Ippokratio 20");
 
+        //Create the doctors
         DoctorService doctorService = new DoctorService();
 
         doctorService.createDoctor("28088501568","Panagiotis","Panagiotidis");
@@ -39,7 +42,7 @@ public class Main {
 
 
 
-
+        //Create the timeslots
         TimeslotService timeslotService = new TimeslotService();
         timeslotService.addTimeslot(new Timeslot(6,5,2022,18,00,01,20,doctorService.getAllDoctors().get(0)));
         timeslotService.addTimeslot( new Timeslot(9,4,2022,12,10,11,30,doctorService.getAllDoctors().get(0)));

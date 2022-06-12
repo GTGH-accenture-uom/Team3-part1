@@ -71,7 +71,6 @@ public class InsuredService {
         return results;
     }
 
-    //ToDo
     //Checks and prints if the insured person's vaccination coverage has expired
     // or not depending on the vaccination they had.
     public void checkHasCoverage(Insured insured){

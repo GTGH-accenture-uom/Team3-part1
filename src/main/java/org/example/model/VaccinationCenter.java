@@ -2,13 +2,13 @@ package org.example.model;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VaccinationCenter {
     private String code;
     private String address;
-    private ArrayList<Timeslot> timeslots;
-    //mallon den tha xreiastei auto edw
-    ArrayList<Reservation> reservations = new ArrayList<>();
+    private List<Timeslot> timeslots;
+
 
     public VaccinationCenter(String code, String address) {
         this.code = code;
@@ -38,22 +38,9 @@ public class VaccinationCenter {
         this.address = address;
     }
 
-    public ArrayList<Timeslot> getTimeslots() {
-        return timeslots;
-    }
+    public List<Timeslot> getTimeslots() { return timeslots; }
 
-    public void setTimeslots(ArrayList<Timeslot> timeslots) {
-        this.timeslots = timeslots;
-    }
-
-    public void setReservations(ArrayList<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public ArrayList<Reservation> getReservations() {
-        return reservations;
-    }
-
+    public void setTimeslots(List<Timeslot> timeslots) { this.timeslots = timeslots; }
 
     @Override
     public String toString() {
@@ -63,22 +50,10 @@ public class VaccinationCenter {
                 '}';
     }
 
-    public void printOpenDates(){
-        System.out.println("The available dates of the " + code + " vaccination center are: ");
-        for (Reservation rev : reservations){
-            if (reservations.isEmpty()) {
-                continue;
-            }
-            System.out.println(timeslots);
-        }
-    }
-
 
     //adds a new timeslot to the vaccination center
     public void addTimeslot(Timeslot timeslot){
         timeslots.add(timeslot);
         timeslot.getDoctor().addTimeslot(timeslot);
-
     }
-
 }
